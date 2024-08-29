@@ -1,0 +1,39 @@
+<style>
+    .alert {
+        z-index: 9999;
+        width: 400px;
+        margin: 10px;
+        position: fixed;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        border-radius: 100px;
+    }
+</style>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category }} alert-dismissible fade show text-center" role="alert">
+    {% if category == 'success' %}
+    <strong>
+        <i class="fas fa-check-circle"></i>
+    </strong>
+    {% elif category == 'danger' %}
+    <strong>
+        <i class="fas fa-exclamation-triangle"></i>
+    </strong>
+    {% endif %}
+    <strong>{{message|safe}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
+<script>
+    var alertList = document.querySelectorAll('.alert');
+    alertList.forEach(function (alert) {
+        new bootstrap.Alert(alert)
+    })
+</script>
+
+{% endwith %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid px-0">
+
+</div>
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Your Audio</h1>
+        <p class="col-md-8 fs-4">
+            <audio controls>
+                <source src="{{ audio_file }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio><br><br>
+            <a href="{{ audio_file }}" download="output.mp3">
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i>
+                    Download Audio
+                </button>
+            </a><br><br>
+        </p>
+        <a class="btn btn-outline-dark btn-lg" type="button" href="/convert">
+            Test a new audio <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+
+</script>
+{% endblock %}
+{% block css %}
+<style>
+
+</style>
+{% endblock %}
+{% block head %}{% endblock %}

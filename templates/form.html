@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid px-0">
+
+</div>
+<div class="container py-5">
+    <div class="display-3">
+        <h1>Audio Convertion</h1>
+    </div>
+    <form method="post" class="card border-0">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="voice" class="form-label">Select Voice</label>
+                <select class="form-select form-select-lg" name="voice" id="voice">
+                    {% for voice_id, voice_name in voices %}
+                    <option value="{{ voice_id }}">{{ voice_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="rate" class="form-label">Select Rate</label>
+                <select class="form-select form-select-lg" name="rate" id="rate">
+                    {% for i in range(50, 201, 25) %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Add your text content</label>
+                <textarea class="form-control" name="text" id="text" rows="10"
+                    placeholder="Some text here..."></textarea>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="filename" id="filename"
+                    placeholder="enter file name for audio" value="output.mp3" />
+                <label for="filename">Audio File Name</label>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Generate Audio</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+
+</script>
+{% endblock %}
+{% block css %}
+<style>
+
+</style>
+{% endblock %}
+{% block head %}{% endblock %}
