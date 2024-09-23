@@ -1,39 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid px-0">
-
-</div>
-
-<div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Your Audio</h1>
-        <p class="col-md-8 fs-4">
-            <audio controls>
+<div class="min-h-screen flex items-center justify-center py-10">
+    <div class="max-w-2xl w-full bg-purple-700 bg-opacity-30 backdrop-blur-lg border border-gray-200 p-8 rounded-lg shadow-2xl transform transition-all duration-300 hover:scale-100">
+        <h1 class="text-4xl font-extrabold mb-6 text-purple-200 text-center">🎧 Your Audio</h1>
+        
+        <!-- Audio Player Section -->
+        <div class="text-center text-purple-300 mb-6">
+            <audio controls class="w-full">
                 <source src="{{ audio_file }}" type="audio/mpeg">
                 Your browser does not support the audio element.
-            </audio><br><br>
+            </audio>
+        </div>
+
+        <!-- Download Button -->
+        <div class="text-center mb-6">
             <a href="{{ audio_file }}" download="output.mp3">
-                <button class="btn btn-primary">
-                    <i class="fas fa-download"></i>
-                    Download Audio
+                <button class="bg-gradient-to-r from-purple-600 to-purple-900 text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-gradient-to-l hover:from-purple-900 hover:to-purple-600 transition duration-300 ease-in-out transform hover:scale-105">
+                    <i class="fas fa-download"></i> Download Audio
                 </button>
-            </a><br><br>
-        </p>
-        <a class="btn btn-outline-dark btn-lg" type="button" href="/convert">
-            Test a new audio <i class="fas fa-arrow-right"></i>
-        </a>
+            </a>
+        </div>
+
+        <!-- Test a New Audio Button -->
+        <div class="text-center">
+            <a class="inline-block bg-transparent border border-purple-400 text-purple-200 font-semibold px-5 py-3 rounded-full hover:bg-purple-400 hover:text-purple-900 transition duration-300 ease-in-out" type="button" href="/convert">
+                Test a new audio <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </div>
-
 {% endblock %}
-{% block js %}
-<script>
 
-</script>
-{% endblock %}
 {% block css %}
 <style>
+    body {
+        background-image: url('https://artfiles.alphacoders.com/365/36568.gif');
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    .backdrop-blur-lg {
+        backdrop-filter: blur(12px); /* Frosted glass effect */
+    }
+
+    .shadow-2xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Enhance shadow for depth */
+    }
+
+    .rounded-full {
+        border-radius: 9999px;
+    }
+
+    audio {
+        background-color: rgba(128, 90, 213, 0.2); /* Light purple background */
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Update placeholder colors to match purple theme */
+    .form-input::placeholder {
+        color: #e0c3fc; /* Light purple placeholder */
+        font-style: italic;
+    }
+
+    .form-input {
+        background-color: rgba(128, 90, 213, 0.2); /* Light purple input background */
+    }
 </style>
 {% endblock %}
-{% block head %}{% endblock %}

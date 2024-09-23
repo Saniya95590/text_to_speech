@@ -1,56 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid px-0">
-
-</div>
-<div class="container py-5">
-    <div class="display-3">
-        <h1>Audio Convertion</h1>
-    </div>
-    <form method="post" class="card border-0">
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="voice" class="form-label">Select Voice</label>
-                <select class="form-select form-select-lg" name="voice" id="voice">
+<div class="min-h-screen flex items-center justify-center py-10">
+    <!-- Audio Conversion Section -->
+    <div class="max-w-lg w-full bg-purple-700 bg-opacity-30 backdrop-blur-lg border border-gray-200 p-8 rounded-lg shadow-2xl transform transition-all duration-300 hover:scale-100">
+        <h3 class="text-3xl font-extrabold mb-4 text-purple-200 text-center">🎶 Audio Conversion</h3>
+        <p class="text-purple-300 mb-6 text-center">Convert text to audio with customizable voice and rate options.</p>
+        <form method="post" class="space-y-4">
+            <div class="mb-5">
+                <label for="voice" class="block text-lg font-medium text-purple-200 mb-2">Select Voice</label>
+                <select class="w-full form-select bg-purple-800 bg-opacity-40 border border-transparent text-lg py-3 px-4 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-200 ease-in-out" name="voice" id="voice">
                     {% for voice_id, voice_name in voices %}
                     <option value="{{ voice_id }}">{{ voice_name }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="rate" class="form-label">Select Rate</label>
-                <select class="form-select form-select-lg" name="rate" id="rate">
+
+            <div class="mb-5">
+                <label for="rate" class="block text-lg font-medium text-purple-200 mb-2">Select Rate</label>
+                <select class="w-full form-select bg-purple-800 bg-opacity-40 border border-transparent text-lg py-3 px-4 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-200 ease-in-out" name="rate" id="rate">
                     {% for i in range(50, 201, 25) %}
                     <option value="{{ i }}">{{ i }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="text" class="form-label">Add your text content</label>
-                <textarea class="form-control" name="text" id="text" rows="10"
-                    placeholder="Some text here..."></textarea>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="filename" id="filename"
-                    placeholder="enter file name for audio" value="output.mp3" />
-                <label for="filename">Audio File Name</label>
+
+            <div class="relative mb-5">
+                <label for="text" class="block text-lg font-medium text-purple-200 mb-2">Add your text content</label>
+                <textarea class="form-input w-full bg-purple-800 bg-opacity-40 border border-transparent text-lg py-3 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-200 ease-in-out" name="text" id="text" rows="5" placeholder="Enter text here..."></textarea>
             </div>
 
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Generate Audio</button>
+            <div class="relative mb-5">
+                <label for="filename" class="block text-lg font-medium text-purple-200 mb-2">Audio File Name</label>
+                <input type="text" class="form-input w-full bg-purple-800 bg-opacity-40 border border-transparent text-lg py-3 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-200 ease-in-out" name="filename" id="filename" value="output.mp3" />
             </div>
-        </div>
-    </form>
+
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold px-5 py-3 rounded-full shadow-lg hover:bg-gradient-to-l hover:from-indigo-500 hover:to-purple-500 transition duration-300 ease-in-out transform hover:scale-105">
+                🎧 Generate Audio
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
-{% block js %}
-<script>
 
-</script>
-{% endblock %}
 {% block css %}
 <style>
+    body {
+        background-image: url('https://artfiles.alphacoders.com/365/36568.gif');
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    .form-input::placeholder {
+        color: #d1d5db; /* Light gray for placeholder */
+        font-style: italic;
+    }
+
+    .form-input {
+        background-color: rgba(128, 90, 213, 0.2); /* Light purple background for glassmorphism effect */
+    }
+
+    .rounded-full {
+        border-radius: 9999px;
+    }
+
+    .backdrop-blur-lg {
+        backdrop-filter: blur(12px); /* Frosted glass effect */
+    }
+
+    .shadow-2xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Enhance shadow for more depth */
+    }
 </style>
 {% endblock %}
-{% block head %}{% endblock %}
